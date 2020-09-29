@@ -1,7 +1,7 @@
 # Учебный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ксения Торкова](https://up.htmlacademy.ru/react/5/user/23249).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Турецкий](https://up.htmlacademy.ru/react/5/user/439019).
 
 ---
 
