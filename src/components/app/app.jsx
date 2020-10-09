@@ -7,21 +7,39 @@ import PropTypes from "prop-types";
 import React from "react";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 import Win from "../win/win";
+import GameScreen from "../game-screen/game-screen";
 
 const App = (props) => {
-  const {errorsCount} = props;
+  const {errorsCount, questions} = props;
+  const [genreQuestion, , artistQuestion] = questions;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact>
-          <WelcomeScreen errorsCount = {errorsCount} />
+        <Route
+          path = "/"
+          exact
+          render = {({history}) => (
+            <WelcomeScreen
+              errorsCount = {errorsCount}
+              onPlayButtonClick = {() => history.push(`/game`)}
+            />
+          )}
+        />
+        <Route path="/game" exact>
+          <GameScreen questions = {questions} />
         </Route>
         <Route path="/dev-artist" exact>
-          <Artist />
+          <Artist
+            onAnswer = {() => {}}
+            question = {artistQuestion}
+          />
         </Route>
         <Route path="/dev-genre" exact>
-          <Genre />
+          <Genre
+            onAnswer = {() => {}}
+            question = {genreQuestion}
+          />
         </Route>
         <Route path="/login" exact>
           <Login />
@@ -48,6 +66,7 @@ const App = (props) => {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
+  questions: PropTypes.array.isRequired,
 };
 
 export default App;

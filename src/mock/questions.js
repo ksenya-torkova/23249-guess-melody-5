@@ -1,6 +1,6 @@
 import {GameType} from "../const";
 
-const AVATAR_URL = `https://placekitten.com/200/200`;
+const AVATAR_URL = `https://placekitten.com/200/`;
 
 export default [
   {
@@ -51,15 +51,15 @@ export default [
     answers: [
       {
         artist: `John Snow`,
-        picture: `${AVATAR_URL}/${Math.random()}`,
+        picture: `${AVATAR_URL}200`,
       },
       {
         artist: `Jack Daniels`,
-        picture: `${AVATAR_URL}/${Math.random()}`,
+        picture: `${AVATAR_URL}201`,
       },
       {
         artist: `Jim Beam`,
-        picture: `${AVATAR_URL}/${Math.random()}`,
+        picture: `${AVATAR_URL}202`,
       },
     ],
     song: {
@@ -73,15 +73,15 @@ export default [
     answers: [
       {
         artist: `Jack Daniels`,
-        picture: `${AVATAR_URL}/${Math.random()}`,
+        picture: `${AVATAR_URL}203`,
       },
       {
         artist: `Jim Beam`,
-        picture: `${AVATAR_URL}/${Math.random()}`,
+        picture: `${AVATAR_URL}204`,
       },
       {
         artist: `John Snow`,
-        picture: `${AVATAR_URL}/${Math.random()}`,
+        picture: `${AVATAR_URL}205`,
       },
     ],
     song: {
