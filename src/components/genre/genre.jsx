@@ -1,5 +1,4 @@
-import {GameType} from "../../const";
-import PropTypes from "prop-types";
+import {genreTypes} from "../../prop-types";
 import React, {PureComponent} from "react";
 
 class Genre extends PureComponent {
@@ -12,7 +11,7 @@ class Genre extends PureComponent {
   }
 
   render() {
-    const {onAnswer, question} = this.props;
+    const {onAnswer, question, renderPlayer} = this.props;
     const {answers: userAnswers} = this.state;
     const {answers, genre} = question;
 
@@ -48,10 +47,7 @@ class Genre extends PureComponent {
 
             {answers.map((answer, i) => (
               <div className="track" key={`${i}-${answer.src}`}>
-                <button className="track__button track__button--play" type="button"></button>
-                <div className="track__status">
-                  <audio src={answer.src}></audio>
-                </div>
+                {renderPlayer(answer.src, i)}
                 <div className="game__answer">
                   <input
                     className="game__input visually-hidden"
@@ -80,16 +76,6 @@ class Genre extends PureComponent {
   }
 }
 
-Genre.propTypes = {
-  question: PropTypes.shape({
-    answers: PropTypes.arrayOf(PropTypes.shape({
-      genre: PropTypes.string.isRequired,
-      src: PropTypes.string.isRequired,
-    })).isRequired,
-    genre: PropTypes.string.isRequired,
-    type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
-  }).isRequired,
-  onAnswer: PropTypes.func.isRequired,
-};
+Genre.propTypes = genreTypes;
 
 export default Genre;

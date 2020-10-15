@@ -1,9 +1,8 @@
-import {GameType} from "../../const";
-import PropTypes from "prop-types";
+import {artistTypes} from "../../prop-types";
 import React from "react";
 
 const Artist = (props) => {
-  const {onAnswer, question} = props;
+  const {onAnswer, question, renderPlayer} = props;
   const {answers, song} = question;
 
   return (
@@ -31,10 +30,7 @@ const Artist = (props) => {
 
         <div className="game__track">
           <div className="track">
-            <button className="track__button track__button--play" type="button"></button>
-            <div className="track__status">
-              <audio src={song.src}></audio>
-            </div>
+            {renderPlayer(song.src, 0)}
           </div>
         </div>
 
@@ -64,19 +60,6 @@ const Artist = (props) => {
   );
 };
 
-Artist.propTypes = {
-  onAnswer: PropTypes.func.isRequired,
-  question: PropTypes.shape({
-    answers: PropTypes.arrayOf(PropTypes.shape({
-      artist: PropTypes.string.isRequired,
-      picture: PropTypes.string.isRequired,
-    })).isRequired,
-    song: PropTypes.shape({
-      artist: PropTypes.string.isRequired,
-      src: PropTypes.string.isRequired,
-    }).isRequired,
-    type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired
-  }).isRequired,
-};
+Artist.propTypes = artistTypes;
 
 export default Artist;

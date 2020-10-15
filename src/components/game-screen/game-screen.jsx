@@ -4,6 +4,10 @@ import Artist from "../artist/artist";
 import Genre from "../genre/genre";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+
+const ArtistHoc = withActivePlayer(Artist);
+const GenreHoc = withActivePlayer(Genre);
 
 class GameScreen extends PureComponent {
   constructor(props) {
@@ -28,7 +32,7 @@ class GameScreen extends PureComponent {
     switch (question.type) {
       case GameType.ARTIST:
         return (
-          <Artist
+          <ArtistHoc
             onAnswer = {() => {
               this.setState((prevState) => ({
                 step: prevState.step + 1,
@@ -40,7 +44,7 @@ class GameScreen extends PureComponent {
 
       case GameType.GENRE:
         return (
-          <Genre
+          <GenreHoc
             onAnswer = {() => {
               this.setState((prevState) => ({
                 step: prevState.step + 1,
