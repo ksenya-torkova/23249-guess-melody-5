@@ -1,13 +1,6 @@
 import PropTypes from "prop-types";
 import {GameType} from "./const";
 
-const appTypes = {
-  errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.arrayOf(
-      PropTypes.oneOfType([artistTypes.question, genreTypes.question])
-  ).isRequired,
-};
-
 const artistTypes = {
   onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
@@ -35,6 +28,13 @@ const genreTypes = {
   }).isRequired,
   onAnswer: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
+};
+
+const appTypes = {
+  errorsCount: PropTypes.number.isRequired,
+  questions: PropTypes.arrayOf(
+      PropTypes.oneOfType([artistTypes.question, genreTypes.question])
+  ).isRequired,
 };
 
 const playerTypes = {

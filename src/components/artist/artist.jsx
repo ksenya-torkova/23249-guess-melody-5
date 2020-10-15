@@ -36,7 +36,7 @@ const Artist = (props) => {
 
         <form className="game__artist">
           {answers.map((answer, i) => (
-            <div className="artist" key={answer.src}>
+            <div className="artist" key={`${answer.src}-${i}`}>
               <input
                 className="artist__input visually-hidden"
                 type="radio"
