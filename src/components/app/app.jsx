@@ -1,17 +1,14 @@
+import {appTypes} from "../../prop-types";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import Artist from "../artist/artist";
-import Genre from "../genre/genre";
+import GameScreen from "../game-screen/game-screen";
 import Login from "../login/login";
 import Losing from "../losing/losing";
-import PropTypes from "prop-types";
 import React from "react";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 import Win from "../win/win";
-import GameScreen from "../game-screen/game-screen";
 
 const App = (props) => {
   const {errorsCount, questions} = props;
-  const [genreQuestion, , artistQuestion] = questions;
 
   return (
     <BrowserRouter>
@@ -28,18 +25,6 @@ const App = (props) => {
         />
         <Route path="/game" exact>
           <GameScreen questions = {questions} />
-        </Route>
-        <Route path="/dev-artist" exact>
-          <Artist
-            onAnswer = {() => {}}
-            question = {artistQuestion}
-          />
-        </Route>
-        <Route path="/dev-genre" exact>
-          <Genre
-            onAnswer = {() => {}}
-            question = {genreQuestion}
-          />
         </Route>
         <Route path="/login" exact>
           <Login />
@@ -64,9 +49,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = {
-  errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
-};
+App.propTypes = appTypes;
 
 export default App;

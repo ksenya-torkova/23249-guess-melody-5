@@ -50,28 +50,6 @@ export default [
   {
     answers: [
       {
-        artist: `John Snow`,
-        picture: `${AVATAR_URL}200`,
-      },
-      {
-        artist: `Jack Daniels`,
-        picture: `${AVATAR_URL}201`,
-      },
-      {
-        artist: `Jim Beam`,
-        picture: `${AVATAR_URL}202`,
-      },
-    ],
-    song: {
-      artist: `Jim Beam`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/3/32/Jingle_Bells_Or_The_One_Horse_Open_Sleigh_Complete.ogg`
-    },
-    type: GameType.ARTIST,
-
-  },
-  {
-    answers: [
-      {
         artist: `Jack Daniels`,
         picture: `${AVATAR_URL}203`,
       },
