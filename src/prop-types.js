@@ -17,6 +17,13 @@ const artistTypes = {
   renderPlayer: PropTypes.func.isRequired,
 };
 
+const gameScreenTypes = {
+  onUserAnswer: PropTypes.func.isRequired,
+  questions: PropTypes.array.isRequired,
+  resetGame: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired,
+};
+
 const genreTypes = {
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
@@ -43,4 +50,4 @@ const playerTypes = {
   src: PropTypes.string.isRequired,
 };
 
-export {appTypes, artistTypes, genreTypes, playerTypes};
+export {appTypes, artistTypes, gameScreenTypes, genreTypes, playerTypes};
