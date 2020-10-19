@@ -11,7 +11,7 @@ class Genre extends PureComponent {
   }
 
   render() {
-    const {onAnswer, question, renderPlayer} = this.props;
+    const {onAnswer, question, renderPlayer, children} = this.props;
     const {answers: userAnswers} = this.state;
     const {answers, genre} = question;
 
@@ -28,11 +28,8 @@ class Genre extends PureComponent {
               style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}}/>
           </svg>
 
-          <div className="game__mistakes">
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-          </div>
+          {children}
+
         </header>
 
         <section className="game__screen">
@@ -46,7 +43,7 @@ class Genre extends PureComponent {
           >
 
             {answers.map((answer, i) => (
-              <div className="track" key={`${i}-${answer.src}`}>
+              <div className="track" key={answer.id}>
                 {renderPlayer(answer.src, i)}
                 <div className="game__answer">
                   <input

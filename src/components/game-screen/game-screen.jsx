@@ -1,10 +1,11 @@
 import {ActionCreator} from "../../store/action";
 import {connect} from "react-redux";
+import {gameScreenTypes} from "../../prop-types";
 import {GameType} from "../../const";
 import {Redirect} from "react-router-dom";
 import Artist from "../artist/artist";
 import Genre from "../genre/genre";
-import {gameScreenTypes} from "../../prop-types";
+import Mistake from "../mistake/mistake";
 import React from "react";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
@@ -13,6 +14,7 @@ const GenreHoc = withActivePlayer(Genre);
 
 const GameScreen = (props) => {
   const {
+    mistakesCount,
     onUserAnswer,
     questions,
     resetGame,
@@ -35,7 +37,9 @@ const GameScreen = (props) => {
         <ArtistHoc
           onAnswer = {onUserAnswer}
           question = {question}
-        />
+        >
+          <Mistake count = {mistakesCount} />
+        </ArtistHoc>
       );
 
     case GameType.GENRE:
@@ -43,7 +47,9 @@ const GameScreen = (props) => {
         <GenreHoc
           onAnswer = {onUserAnswer}
           question = {question}
-        />
+        >
+          <Mistake count = {mistakesCount} />
+        </GenreHoc>
       );
   }
 
@@ -53,6 +59,7 @@ const GameScreen = (props) => {
 GameScreen.propTypes = gameScreenTypes;
 
 const mapStateToProps = (state) => ({
+  mistakesCount: state.mistakes,
   step: state.step,
 });
 

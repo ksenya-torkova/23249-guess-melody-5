@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import {GameType} from "./const";
 
 const artistTypes = {
+  children: PropTypes.element.isRequired,
   onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
@@ -18,6 +19,7 @@ const artistTypes = {
 };
 
 const gameScreenTypes = {
+  mistakesCount: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
   resetGame: PropTypes.func.isRequired,
@@ -25,6 +27,8 @@ const gameScreenTypes = {
 };
 
 const genreTypes = {
+  children: PropTypes.element.isRequired,
+  onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
       genre: PropTypes.string.isRequired,
@@ -33,7 +37,6 @@ const genreTypes = {
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
-  onAnswer: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };
 
@@ -44,10 +47,14 @@ const appTypes = {
   ).isRequired,
 };
 
+const mistakeTypes = {
+  count: PropTypes.number.isRequired,
+};
+
 const playerTypes = {
   isPlaying: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
 };
 
-export {appTypes, artistTypes, gameScreenTypes, genreTypes, playerTypes};
+export {appTypes, artistTypes, gameScreenTypes, genreTypes, mistakeTypes, playerTypes};

@@ -2,7 +2,7 @@ import {artistTypes} from "../../prop-types";
 import React from "react";
 
 const Artist = (props) => {
-  const {onAnswer, question, renderPlayer} = props;
+  const {onAnswer, question, renderPlayer, children} = props;
   const {answers, song} = question;
 
   return (
@@ -18,11 +18,8 @@ const Artist = (props) => {
             style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
         </svg>
 
-        <div className="game__mistakes">
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-        </div>
+        {children}
+
       </header>
 
       <section className="game__screen">
@@ -36,7 +33,7 @@ const Artist = (props) => {
 
         <form className="game__artist">
           {answers.map((answer, i) => (
-            <div className="artist" key={`${answer.src}-${i}`}>
+            <div className="artist" key={answer.id}>
               <input
                 className="artist__input visually-hidden"
                 type="radio"
