@@ -18,14 +18,6 @@ const artistTypes = {
   renderPlayer: PropTypes.func.isRequired,
 };
 
-const gameScreenTypes = {
-  mistakesCount: PropTypes.number.isRequired,
-  onUserAnswer: PropTypes.func.isRequired,
-  questions: PropTypes.array.isRequired,
-  resetGame: PropTypes.func.isRequired,
-  step: PropTypes.number.isRequired,
-};
-
 const genreTypes = {
   children: PropTypes.element.isRequired,
   onAnswer: PropTypes.func.isRequired,
@@ -40,11 +32,14 @@ const genreTypes = {
   renderPlayer: PropTypes.func.isRequired,
 };
 
-const appTypes = {
-  errorsCount: PropTypes.number.isRequired,
+const gameScreenTypes = {
+  mistakesCount: PropTypes.number.isRequired,
+  onUserAnswer: PropTypes.func.isRequired,
   questions: PropTypes.arrayOf(
       PropTypes.oneOfType([artistTypes.question, genreTypes.question])
   ).isRequired,
+  resetGame: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired,
 };
 
 const mistakeTypes = {
@@ -57,4 +52,4 @@ const playerTypes = {
   src: PropTypes.string.isRequired,
 };
 
-export {appTypes, artistTypes, gameScreenTypes, genreTypes, mistakeTypes, playerTypes};
+export {artistTypes, gameScreenTypes, genreTypes, mistakeTypes, playerTypes};

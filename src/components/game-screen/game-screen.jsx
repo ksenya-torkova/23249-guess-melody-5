@@ -60,6 +60,7 @@ GameScreen.propTypes = gameScreenTypes;
 
 const mapStateToProps = (state) => ({
   mistakesCount: state.mistakes,
+  questions: state.questions,
   step: state.step,
 });
 
@@ -68,8 +69,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.resetGame());
   },
 
-  onUserAnswer() {
+  onUserAnswer(question, userAnswer) {
     dispatch(ActionCreator.incrementStep());
+    dispatch(ActionCreator.incrementMistake(question, userAnswer));
   }
 });
 
