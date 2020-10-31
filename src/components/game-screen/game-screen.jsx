@@ -8,9 +8,10 @@ import Genre from "../genre/genre";
 import Mistake from "../mistake/mistake";
 import React from "react";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+import withUserAnswer from "../../hocs/with-user-answer/with-user-answer";
 
 const ArtistHoc = withActivePlayer(Artist);
-const GenreHoc = withActivePlayer(Genre);
+const GenreHoc = withActivePlayer(withUserAnswer(Genre));
 
 const GameScreen = (props) => {
   const {

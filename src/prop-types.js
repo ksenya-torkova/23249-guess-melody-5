@@ -29,7 +29,9 @@ const genreTypes = {
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
+  onChange: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
+  userAnswers: PropTypes.arrayOf(PropTypes.bool).isRequired,
 };
 
 const gameScreenTypes = {
@@ -62,6 +64,18 @@ const withAudioTypes = {
   src: PropTypes.string.isRequired,
 };
 
+const withUserAnswerTypes = {
+  question: PropTypes.shape({
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+    })).isRequired,
+    genre: PropTypes.string.isRequired,
+    type: PropTypes.oneOf([GameType.GENRE]).isRequired,
+  }).isRequired,
+  onAnswer: PropTypes.func.isRequired,
+};
+
 export {
   artistTypes,
   gameScreenTypes,
@@ -69,4 +83,5 @@ export {
   mistakeTypes,
   playerTypes,
   withAudioTypes,
+  withUserAnswerTypes,
 };
