@@ -49,7 +49,24 @@ const mistakeTypes = {
 const playerTypes = {
   isPlaying: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
+
+const withAudioTypes = {
+  isPlaying: PropTypes.bool.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
 };
 
-export {artistTypes, gameScreenTypes, genreTypes, mistakeTypes, playerTypes};
+export {
+  artistTypes,
+  gameScreenTypes,
+  genreTypes,
+  mistakeTypes,
+  playerTypes,
+  withAudioTypes,
+};
