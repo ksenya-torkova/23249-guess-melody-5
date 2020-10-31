@@ -1,6 +1,7 @@
 import {genreTypes} from "../../prop-types";
-import React from "react";
 import {nanoid} from "nanoid";
+import GenreQuestionItem from "../genre-question-item/genre-question-item";
+import React from "react";
 
 const Genre = (props) => {
   const {
@@ -45,20 +46,14 @@ const Genre = (props) => {
         >
 
           {answers.map((answer, i) => (
-            <div key={nanoid()} className="track">
-              {renderPlayer(answer.src, i)}
-              <div className="game__answer">
-                <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`}
-                  id={`answer-${i}`}
-                  checked={userAnswers[i]}
-                  onChange={(evt) => {
-                    const value = evt.target.checked;
-                    onChange(i, value);
-                  }}
-                />
-                <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>
-              </div>
-            </div>
+            <GenreQuestionItem
+              answer = {answer}
+              id = {i}
+              key = {nanoid()}
+              onChange = {onChange}
+              renderPlayer = {renderPlayer}
+              userAnswer = {userAnswers[i]}
+            />
           ))}
 
           <button className="game__submit button" type="submit">Ответить</button>
