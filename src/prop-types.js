@@ -40,8 +40,23 @@ const gameScreenTypes = {
   questions: PropTypes.arrayOf(
       PropTypes.oneOfType([artistTypes.question, genreTypes.question])
   ).isRequired,
-  resetGame: PropTypes.func.isRequired,
   step: PropTypes.number.isRequired,
+};
+
+const genreQuestionItemTypes = {
+  answer: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  }).isRequired,
+  id: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+  renderPlayer: PropTypes.func.isRequired,
+  userAnswer: PropTypes.bool.isRequired,
+};
+
+const losingTypes = {
+  onReplayButtonClick: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
 };
 
 const mistakeTypes = {
@@ -56,6 +71,13 @@ const playerTypes = {
     PropTypes.node
   ]).isRequired,
   isLoading: PropTypes.bool.isRequired,
+};
+
+const winTypes = {
+  questionsCount: PropTypes.number.isRequired,
+  mistakesCount: PropTypes.number.isRequired,
+  onReplayButtonClick: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
 };
 
 const withAudioTypes = {
@@ -79,9 +101,12 @@ const withUserAnswerTypes = {
 export {
   artistTypes,
   gameScreenTypes,
+  genreQuestionItemTypes,
   genreTypes,
+  losingTypes,
   mistakeTypes,
   playerTypes,
+  winTypes,
   withAudioTypes,
   withUserAnswerTypes,
 };
