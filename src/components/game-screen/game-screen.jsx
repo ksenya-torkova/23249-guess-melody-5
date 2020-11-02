@@ -1,33 +1,37 @@
 import {ActionCreator} from "../../store/action";
 import {connect} from "react-redux";
 import {gameScreenTypes} from "../../prop-types";
-import {GameType} from "../../const";
+import {GameType, MISTAKES_MAX_AMOUNT} from "../../const";
 import {Redirect} from "react-router-dom";
 import Artist from "../artist/artist";
 import Genre from "../genre/genre";
 import Mistake from "../mistake/mistake";
 import React from "react";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+import withUserAnswer from "../../hocs/with-user-answer/with-user-answer";
 
 const ArtistHoc = withActivePlayer(Artist);
-const GenreHoc = withActivePlayer(Genre);
+const GenreHoc = withActivePlayer(withUserAnswer(Genre));
 
 const GameScreen = (props) => {
   const {
     mistakesCount,
     onUserAnswer,
     questions,
-    resetGame,
     step,
   } = props;
 
   const question = questions[step];
 
-  if (step >= questions.length || !question) {
-    resetGame();
-
+  if (mistakesCount >= MISTAKES_MAX_AMOUNT) {
     return (
-      <Redirect to="/" />
+      <Redirect to="/lose" />
+    );
+  }
+
+  if (step >= questions.length || !question) {
+    return (
+      <Redirect to="/result" />
     );
   }
 

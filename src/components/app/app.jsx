@@ -29,12 +29,22 @@ const App = () => {
         <Route path="/login" exact>
           <Login />
         </Route>
-        <Route path="/lose" exact>
-          <Losing />
-        </Route>
-        <Route path="/result" exact>
-          <Win />
-        </Route>
+        <Route exact
+          path="/result"
+          render={({history}) => (
+            <Win
+              onReplayButtonClick={() => history.push(`/game`)}
+            />
+          )}
+        />
+        <Route exact
+          path="/lose"
+          render={({history}) => (
+            <Losing
+              onReplayButtonClick={() => history.push(`/game`)}
+            />
+          )}
+        />
         <Route>
           <React.Fragment>
             <h1>

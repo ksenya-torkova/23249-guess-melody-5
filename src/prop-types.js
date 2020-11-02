@@ -29,7 +29,9 @@ const genreTypes = {
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
+  onChange: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
+  userAnswers: PropTypes.arrayOf(PropTypes.bool).isRequired,
 };
 
 const gameScreenTypes = {
@@ -38,8 +40,23 @@ const gameScreenTypes = {
   questions: PropTypes.arrayOf(
       PropTypes.oneOfType([artistTypes.question, genreTypes.question])
   ).isRequired,
-  resetGame: PropTypes.func.isRequired,
   step: PropTypes.number.isRequired,
+};
+
+const genreQuestionItemTypes = {
+  answer: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  }).isRequired,
+  id: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+  renderPlayer: PropTypes.func.isRequired,
+  userAnswer: PropTypes.bool.isRequired,
+};
+
+const losingTypes = {
+  onReplayButtonClick: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
 };
 
 const mistakeTypes = {
@@ -49,7 +66,47 @@ const mistakeTypes = {
 const playerTypes = {
   isPlaying: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
+
+const winTypes = {
+  questionsCount: PropTypes.number.isRequired,
+  mistakesCount: PropTypes.number.isRequired,
+  onReplayButtonClick: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
+};
+
+const withAudioTypes = {
+  isPlaying: PropTypes.bool.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
 };
 
-export {artistTypes, gameScreenTypes, genreTypes, mistakeTypes, playerTypes};
+const withUserAnswerTypes = {
+  question: PropTypes.shape({
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+    })).isRequired,
+    genre: PropTypes.string.isRequired,
+    type: PropTypes.oneOf([GameType.GENRE]).isRequired,
+  }).isRequired,
+  onAnswer: PropTypes.func.isRequired,
+};
+
+export {
+  artistTypes,
+  gameScreenTypes,
+  genreQuestionItemTypes,
+  genreTypes,
+  losingTypes,
+  mistakeTypes,
+  playerTypes,
+  winTypes,
+  withAudioTypes,
+  withUserAnswerTypes,
+};
