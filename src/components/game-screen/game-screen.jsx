@@ -1,4 +1,4 @@
-import {ActionCreator} from "../../store/action";
+import {incrementMistake, incrementStep, resetGame} from "../../store/action";
 import {connect} from "react-redux";
 import {gameScreenTypes} from "../../prop-types";
 import {GameType, MISTAKES_MAX_AMOUNT} from "../../const";
@@ -62,20 +62,20 @@ const GameScreen = (props) => {
 
 GameScreen.propTypes = gameScreenTypes;
 
-const mapStateToProps = (state) => ({
-  mistakesCount: state.mistakes,
-  questions: state.questions,
-  step: state.step,
+const mapStateToProps = ({DATA, GAME}) => ({
+  mistakesCount: GAME.mistakes,
+  questions: DATA.questions,
+  step: GAME.step,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   resetGame() {
-    dispatch(ActionCreator.resetGame());
+    dispatch(resetGame());
   },
 
   onUserAnswer(question, userAnswer) {
-    dispatch(ActionCreator.incrementStep());
-    dispatch(ActionCreator.incrementMistake(question, userAnswer));
+    dispatch(incrementStep());
+    dispatch(incrementMistake(question, userAnswer));
   }
 });
 
