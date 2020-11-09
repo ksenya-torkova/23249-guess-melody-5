@@ -4,6 +4,7 @@ import {isArtistAnswerCorrect, isGenreAnswerCorrect} from "../game";
 const ActionType = {
   INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
   INCREMENT_STEP: `INCREMENT_STEP`,
+  LOAD_QUESTIONS: `LOAD_QUESTIONS`,
   RESET_GAME: `RESET_GAME`,
 };
 
@@ -33,8 +34,13 @@ const incrementStep = () => ({
   payload: DEFAULT_STEP_SIZE,
 });
 
+const loadQuestions = (questions) => ({
+  type: ActionType.LOAD_QUESTIONS,
+  payload: questions,
+});
+
 const resetGame = () => ({
   type: ActionType.RESET_GAME,
 });
 
-export {ActionType, incrementMistake, incrementStep, resetGame};
+export {ActionType, incrementMistake, incrementStep, loadQuestions, resetGame};
