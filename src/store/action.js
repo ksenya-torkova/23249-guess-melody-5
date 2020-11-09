@@ -9,34 +9,32 @@ const ActionType = {
 
 const DEFAULT_STEP_SIZE = 1;
 
-const ActionCreator = {
-  incrementMistake: (question, userAnswer) => {
-    let isAnswerCorrect = false;
+const incrementMistake = (question, userAnswer) => {
+  let isAnswerCorrect = false;
 
-    switch (question.type) {
-      case GameType.ARTIST:
-        isAnswerCorrect = isArtistAnswerCorrect(question, userAnswer);
-        break;
+  switch (question.type) {
+    case GameType.ARTIST:
+      isAnswerCorrect = isArtistAnswerCorrect(question, userAnswer);
+      break;
 
-      case GameType.GENRE:
-        isAnswerCorrect = isGenreAnswerCorrect(question, userAnswer);
-        break;
-    }
+    case GameType.GENRE:
+      isAnswerCorrect = isGenreAnswerCorrect(question, userAnswer);
+      break;
+  }
 
-    return {
-      type: ActionType.INCREMENT_MISTAKES,
-      payload: isAnswerCorrect ? 0 : 1,
-    };
-  },
-
-  incrementStep: () => ({
-    type: ActionType.INCREMENT_STEP,
-    payload: DEFAULT_STEP_SIZE,
-  }),
-
-  resetGame: () => ({
-    type: ActionType.RESET_GAME,
-  }),
+  return {
+    type: ActionType.INCREMENT_MISTAKES,
+    payload: isAnswerCorrect ? 0 : 1,
+  };
 };
 
-export {ActionCreator, ActionType};
+const incrementStep = () => ({
+  type: ActionType.INCREMENT_STEP,
+  payload: DEFAULT_STEP_SIZE,
+});
+
+const resetGame = () => ({
+  type: ActionType.RESET_GAME,
+});
+
+export {ActionType, incrementMistake, incrementStep, resetGame};

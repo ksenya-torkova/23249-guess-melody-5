@@ -1,10 +1,10 @@
-import React from "react";
-import {winTypes} from "../../prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {resetGame} from "../../store/action";
+import {winTypes} from "../../prop-types";
+import React from "react";
 
 const Win = (props) => {
-  const {questionsCount, mistakesCount, onReplayButtonClick, resetGame} = props;
+  const {questionsCount, mistakesCount, onReplayButtonClick, resetGameAction} = props;
   const correctlyQuestionsCount = questionsCount - mistakesCount;
 
   return (
@@ -16,7 +16,7 @@ const Win = (props) => {
       <p className="result__total">Вы ответили правильно на {correctlyQuestionsCount} вопросов и совершили {mistakesCount} ошибки</p>
       <button
         onClick = {() => {
-          resetGame();
+          resetGameAction();
           onReplayButtonClick();
         }}
         className="replay"
@@ -36,8 +36,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetGame() {
-    dispatch(ActionCreator.resetGame());
+  resetGameAction() {
+    dispatch(resetGame());
   },
 });
 

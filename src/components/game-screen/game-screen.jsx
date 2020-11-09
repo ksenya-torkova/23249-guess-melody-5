@@ -1,4 +1,4 @@
-import {ActionCreator} from "../../store/action";
+import {incrementMistake, incrementStep, resetGame} from "../../store/action";
 import {connect} from "react-redux";
 import {gameScreenTypes} from "../../prop-types";
 import {GameType, MISTAKES_MAX_AMOUNT} from "../../const";
@@ -70,12 +70,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   resetGame() {
-    dispatch(ActionCreator.resetGame());
+    dispatch(resetGame());
   },
 
   onUserAnswer(question, userAnswer) {
-    dispatch(ActionCreator.incrementStep());
-    dispatch(ActionCreator.incrementMistake(question, userAnswer));
+    dispatch(incrementStep());
+    dispatch(incrementMistake(question, userAnswer));
   }
 });
 

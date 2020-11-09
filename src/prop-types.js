@@ -56,7 +56,7 @@ const genreQuestionItemTypes = {
 
 const losingTypes = {
   onReplayButtonClick: PropTypes.func.isRequired,
-  resetGame: PropTypes.func.isRequired,
+  resetGameAction: PropTypes.func.isRequired,
 };
 
 const mistakeTypes = {
@@ -77,7 +77,7 @@ const winTypes = {
   questionsCount: PropTypes.number.isRequired,
   mistakesCount: PropTypes.number.isRequired,
   onReplayButtonClick: PropTypes.func.isRequired,
-  resetGame: PropTypes.func.isRequired,
+  resetGameAction: PropTypes.func.isRequired,
 };
 
 const withAudioTypes = {
