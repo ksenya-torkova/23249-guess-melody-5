@@ -1,4 +1,5 @@
 import {artistTypes} from "../../prop-types";
+import {nanoid} from "nanoid";
 import React from "react";
 
 const Artist = (props) => {
@@ -33,7 +34,10 @@ const Artist = (props) => {
 
         <form className="game__artist">
           {answers.map((answer, i) => (
-            <div className="artist" key={answer.id}>
+            <div
+              className="artist"
+              key = {nanoid()}
+            >
               <input
                 className="artist__input visually-hidden"
                 type="radio"

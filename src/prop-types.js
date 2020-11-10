@@ -54,6 +54,11 @@ const genreQuestionItemTypes = {
   userAnswer: PropTypes.bool.isRequired,
 };
 
+const loginTypes = {
+  onReplayButtonClick: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
 const losingTypes = {
   onReplayButtonClick: PropTypes.func.isRequired,
   resetGameAction: PropTypes.func.isRequired,
@@ -71,6 +76,13 @@ const playerTypes = {
     PropTypes.node
   ]).isRequired,
   isLoading: PropTypes.bool.isRequired,
+};
+
+const privateRouteTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  exact: PropTypes.bool.isRequired,
+  path: PropTypes.string.isRequired,
+  render: PropTypes.func.isRequired,
 };
 
 const winTypes = {
@@ -103,9 +115,11 @@ export {
   gameScreenTypes,
   genreQuestionItemTypes,
   genreTypes,
+  loginTypes,
   losingTypes,
   mistakeTypes,
   playerTypes,
+  privateRouteTypes,
   winTypes,
   withAudioTypes,
   withUserAnswerTypes,
