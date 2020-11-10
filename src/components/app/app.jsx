@@ -1,11 +1,12 @@
 import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {MISTAKES_MAX_AMOUNT} from "../../const";
 import GameScreen from "../game-screen/game-screen";
 import Login from "../login/login";
 import Losing from "../losing/losing";
+import PrivateRoute from "../private-route/private-route";
 import React from "react";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 import Win from "../win/win";
-import {MISTAKES_MAX_AMOUNT} from "../../const";
 
 const App = () => {
   return (
@@ -29,13 +30,16 @@ const App = () => {
         <Route path="/login" exact>
           <Login />
         </Route>
-        <Route exact
-          path="/result"
-          render={({history}) => (
-            <Win
-              onReplayButtonClick={() => history.push(`/game`)}
-            />
-          )}
+        <PrivateRoute
+          exact
+          path={`/result`}
+          render={({history}) => {
+            return (
+              <Win
+                onReplayButtonClick={() => history.push(`/game`)}
+              />
+            );
+          }}
         />
         <Route exact
           path="/lose"
