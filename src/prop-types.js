@@ -78,6 +78,13 @@ const playerTypes = {
   isLoading: PropTypes.bool.isRequired,
 };
 
+const privateRouteTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  exact: PropTypes.bool.isRequired,
+  path: PropTypes.string.isRequired,
+  render: PropTypes.func.isRequired,
+};
+
 const winTypes = {
   questionsCount: PropTypes.number.isRequired,
   mistakesCount: PropTypes.number.isRequired,
@@ -112,6 +119,7 @@ export {
   losingTypes,
   mistakeTypes,
   playerTypes,
+  privateRouteTypes,
   winTypes,
   withAudioTypes,
   withUserAnswerTypes,
