@@ -54,6 +54,11 @@ const genreQuestionItemTypes = {
   userAnswer: PropTypes.bool.isRequired,
 };
 
+const loginTypes = {
+  onReplayButtonClick: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
 const losingTypes = {
   onReplayButtonClick: PropTypes.func.isRequired,
   resetGameAction: PropTypes.func.isRequired,
@@ -103,6 +108,7 @@ export {
   gameScreenTypes,
   genreQuestionItemTypes,
   genreTypes,
+  loginTypes,
   losingTypes,
   mistakeTypes,
   playerTypes,
