@@ -1,5 +1,6 @@
-import {BrowserRouter, Switch, Route} from "react-router-dom";
 import {MISTAKES_MAX_AMOUNT} from "../../const";
+import {Route, Router as BrowserRouter, Switch} from "react-router-dom";
+import browserHistory from "../../browser-history";
 import GameScreen from "../game-screen/game-screen";
 import Login from "../login/login";
 import Losing from "../losing/losing";
@@ -10,7 +11,7 @@ import Win from "../win/win";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter history = {browserHistory}>
       <Switch>
         <Route
           path = "/"

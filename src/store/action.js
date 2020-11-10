@@ -5,6 +5,7 @@ const ActionType = {
   INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
   INCREMENT_STEP: `INCREMENT_STEP`,
   LOAD_QUESTIONS: `LOAD_QUESTIONS`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   RESET_GAME: `RESET_GAME`,
 };
@@ -40,6 +41,11 @@ const loadQuestions = (questions) => ({
   payload: questions,
 });
 
+const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
+});
+
 const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status,
@@ -54,6 +60,7 @@ export {
   incrementMistake,
   incrementStep,
   loadQuestions,
+  redirectToRoute,
   requireAuthorization,
   resetGame,
 };
