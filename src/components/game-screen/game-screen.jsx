@@ -1,7 +1,8 @@
-import {incrementMistake, incrementStep, resetGame} from "../../store/action";
+import {AppRoute, GameType, MISTAKES_MAX_AMOUNT} from "../../const";
 import {connect} from "react-redux";
 import {gameScreenTypes} from "../../prop-types";
-import {AppRoute, GameType, MISTAKES_MAX_AMOUNT} from "../../const";
+import {incrementMistake, incrementStep, resetGame} from "../../store/action";
+import {nanoid} from "nanoid";
 import {Redirect} from "react-router-dom";
 import Artist from "../artist/artist";
 import Genre from "../genre/genre";
@@ -39,6 +40,7 @@ const GameScreen = (props) => {
     case GameType.ARTIST:
       return (
         <ArtistHoc
+          key = {nanoid()}
           onAnswer = {onUserAnswer}
           question = {question}
         >
@@ -49,6 +51,7 @@ const GameScreen = (props) => {
     case GameType.GENRE:
       return (
         <GenreHoc
+          key = {nanoid()}
           onAnswer = {onUserAnswer}
           question = {question}
         >
