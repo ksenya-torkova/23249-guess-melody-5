@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import {withUserAnswerTypes} from "../../prop-types";
 
-
 const withUserAnswer = (Component) => {
   class WithUserAnswer extends PureComponent {
     constructor(props) {

@@ -4,7 +4,12 @@ import {winTypes} from "../../prop-types";
 import React from "react";
 
 const Win = (props) => {
-  const {questionsCount, mistakesCount, onReplayButtonClick, resetGameAction} = props;
+  const {
+    mistakesCount,
+    onReplayButtonClick,
+    questionsCount,
+    resetGameAction,
+  } = props;
   const correctlyQuestionsCount = questionsCount - mistakesCount;
 
   return (
